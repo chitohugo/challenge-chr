@@ -32,3 +32,17 @@ class Network(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class Project(models.Model):
+    name = models.CharField(max_length=200)
+    type = models.CharField(max_length=200)
+    region = models.CharField(max_length=200)
+    typology = models.CharField(max_length=200)
+    holder = models.CharField(max_length=200)
+    investment = models.CharField(max_length=200)
+    date_admission = models.DateField()
+    status = models.CharField(max_length=200)
+
+    def __str__(self):
+        return str(self.name)

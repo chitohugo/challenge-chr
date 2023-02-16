@@ -90,6 +90,8 @@ env
 venv/
 ENV/
 
+.idea
+
 # Spyder project settings
 .spyderproject
 .spyproject

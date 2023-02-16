@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from api.models import Station, Network
+from api.services import GetCitiBik
 
 DATA = {
     "network": {
@@ -53,28 +54,10 @@ DATA = {
 }
 
 
-class TestGetPost(TestCase):
+class Tests(TestCase):
     def test_create_station_and_network(self):
-        station = Station()
-        station.empty_slots = DATA['network']['stations'][0]['empty_slots']
-        station.extra = DATA['network']['stations'][0]['extra']
-        station.free_bikes = DATA['network']['stations'][0]['free_bikes']
-        station.id = DATA['network']['stations'][0]['id']
-        station.latitude = DATA['network']['stations'][0]['latitude']
-        station.longitude = DATA['network']['stations'][0]['longitude']
-        station.name = DATA['network']['stations'][0]['name']
-        station.timestamp = DATA['network']['stations'][0]['timestamp']
-
-        self.assertEqual(station.id, '558b5143b0d6480940e551f6bcc9fdf8')
-
-        network = Network()
-        network.company = DATA['network']['company']
-        network.gbfs_href = DATA['network']['gbfs_href']
-        network.id = DATA['network']['id']
-        network.location = DATA['network']['location']
-        network.name = DATA['network']['name']
-        network.station = station
-        self.assertEqual(network.station.id, DATA['network']['stations'][0]['id'])
-
-
+        GetCitiBik.create_station_network(DATA)
+        network = Network.objects.get()
+        station = Station.objects.get()
+        assert network.stations.name == station.name
 

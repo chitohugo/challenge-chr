@@ -16,4 +16,15 @@
    - `docker compose exec web python manage.py migrate` 
    - `docker compose exec web python manage.py createsuperuser`
    - `docker compose exec web python manage.py runscript get_citi_bik`
+   - `docker compose exec web python manage.py runscript get_seia`
    - `Go to http://localhost:8000/admin/`
+
+
+### Variables
+
+- SECRET_KEY = 'Generate secret key'
+- POSTGRES_DB = 
+- POSTGRES_USER =
+- POSTGRES_PASSWORD =
+- URL_API = 'http://api.citybik.es/v2/networks/bikesantiago'
+- URL_API2 = 'https://seia.sea.gob.cl/busqueda/buscarProyectoAction.php'

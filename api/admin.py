@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Station, Network
+from .models import Station, Network, Project
 
 
 class StationAdmin(admin.ModelAdmin):
@@ -15,5 +15,12 @@ class NetworkAdmin(admin.ModelAdmin):
     ordering = ('-company',)
 
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'type', 'region', 'typology', 'holder', 'investment', 'date_admission', 'status')
+    search_fields = ('name',)
+    ordering = ('-name',)
+
+
 admin.site.register(Station, StationAdmin)
 admin.site.register(Network, NetworkAdmin)
+admin.site.register(Project, ProjectAdmin)
