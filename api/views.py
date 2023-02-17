@@ -8,6 +8,7 @@ from api.models import Station, Network, Project
 
 
 class StationList(ListView):
+    paginate_by = 10
     model = Station
 
 
@@ -34,6 +35,7 @@ class StationDelete(SuccessMessageMixin, DeleteView):
 
 
 class NetworkList(ListView):
+    paginate_by = 10
     model = Network
 
 
@@ -60,6 +62,7 @@ class NetworkDelete(SuccessMessageMixin, DeleteView):
 
 
 class ProjectList(ListView):
+    paginate_by = 10
     model = Project
 
 

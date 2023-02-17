@@ -1,6 +1,9 @@
+from unittest.mock import patch
+
 from django.test import TestCase
 
 from api.models import Station, Network
+from api.scripts.get_citi_bik import run
 from api.services import GetCitiBik
 
 DATA = {
@@ -61,3 +64,10 @@ class Tests(TestCase):
         station = Station.objects.get()
         assert network.stations.name == station.name
 
+    @patch('api.scripts.get_citi_bik.GetCitiBik.get_data')
+    @patch('api.scripts.get_citi_bik.GetCitiBik.create_station_network')
+    def test_get_data_return_ok(self, mock_get_data, mock_create_station_network):
+        mock_get_data.return_value = DATA
+        mock_create_station_network.return_value = DATA
+        response = run()
+        self.assertEqual(response, None)
