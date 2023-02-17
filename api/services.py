@@ -39,10 +39,11 @@ class GetCitiBik:
         network.company = response['network']['company']
         network.gbfs_href = response['network']['gbfs_href']
         network.href = response['network']['href']
-        network.id = response['network']['id']
         network.location = response['network']['location']
         network.name = response['network']['name']
         for station in response['network']['stations']:
+            station['uid'] = station['id']
+            del station['id']
             station = Station(**station)
             network.stations = station
             station.save()
