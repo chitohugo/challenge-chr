@@ -1,4 +1,4 @@
-# Challenge for ClicOh
+# Challenge for CHR
 
 ## Running with docker
 
