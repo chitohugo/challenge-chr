@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content=""> {% load django_bootstrap5 %} {% bootstrap_css %} {% load static %}
+    <meta name="author" content="">
+      {% load django_bootstrap5 %}
+      {% bootstrap_css %}
+      {% load static %}
   </head>
   <body>
   {% if messages %}
@@ -50,7 +53,7 @@
             <td>{{ station.longitude }}</td>
             <td>{{ station.timestamp }}</td>
             <td>
-              <form method="POST" action="remove/{{project.id}}">
+              <form method="POST" action="remove/{{station.id}}">
                   {% csrf_token %}
                   <div class="btn-group">
                       <a href="edit/{{station.id}}" title="edit" type="button" class="btn btn-primary"></a>

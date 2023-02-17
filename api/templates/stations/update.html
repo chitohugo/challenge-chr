@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        {% load widget_tweaks %}
+        {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid"><a class="navbar-brand" href="#">Challenge</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'list_stations' %}">Stations</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'list_networks' %}">Networks</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'list_projects' %}">Projects</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="formulario" align="left">
+            <h4>Actualizar</h4>
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <!-- {{ form.as_p }} -->
+                <div class="form-group">
+                    <label for="nombre" class="txt_negrita">EmptySlot</label>
+                    {{ form.empty_slots|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="precio" class="txt_negrita">Extra</label>
+                    {{ form.extra|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="stock" class="txt_negrita">Free Bikes</label>
+                    {{ form.free_bikes|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="stock" class="txt_negrita">Latitude</label>
+                    {{ form.latitude|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="stock" class="txt_negrita">Longitude</label>
+                    {{ form.longitude|add_class:"form-control" }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+                <a href="../" type="submit" class="btn btn-primary">Volver</a>
+            </form>
+        </div>
+    </div>
+
+      <script type="text/javascript">
+        $('.form-group').html(function (i, t) {
+          return t.replace('Actualmente:', '<span class="ocultar">Actualmente:</span>');
+        });
+
+         $('.form-group').html(function (i, t) {
+          return t.replace('Currently:', '<span class="ocultar">Currently:</span>');
+        });
+      </script>
+
+  </body>
+</html>
