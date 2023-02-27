@@ -15,8 +15,8 @@
 1. In terminal run: 
    - `docker compose exec web python manage.py migrate` 
    - `docker compose exec web python manage.py createsuperuser`
-   - `docker compose exec web python manage.py runscript get_citi_bik`
    - `docker compose exec web python manage.py runscript get_seia`
+   - `docker compose exec web python manage.py runscript get_citi_bik`
    - `Go to http://localhost:8000/admin/`
 
 

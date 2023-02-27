@@ -41,13 +41,13 @@ class GetCitiBik:
         network.href = response['network']['href']
         network.location = response['network']['location']
         network.name = response['network']['name']
+        network.save()
         for station in response['network']['stations']:
             station['uid'] = station['id']
             del station['id']
             station = Station(**station)
-            network.stations = station
+            station.network = network
             station.save()
-            network.save()
 
 
 class GetSeia:
