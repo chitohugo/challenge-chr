@@ -16,6 +16,9 @@ class Station(models.Model):
     name = models.CharField(max_length=50)
     timestamp = models.DateTimeField()
 
+    class Meta:
+        ordering = ['-name']
+
     def __str__(self):
         return str(self.name)
 
@@ -27,6 +30,9 @@ class Network(models.Model):
     location = models.JSONField(encoder=None)
     name = models.CharField(max_length=50)
     stations = models.ForeignKey(Station, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['-name']
 
     def __str__(self):
         return str(self.name)
@@ -41,6 +47,9 @@ class Project(models.Model):
     investment = models.CharField(max_length=200)
     date_admission = models.DateField()
     status = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ['-name']
 
     def __str__(self):
         return str(self.name)
